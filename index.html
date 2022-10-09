@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script src="encrypt.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <br>
+    <div class="container">
+        <div>
+            <h3>Simple AES Encrypt and Decrypt Use CryptoJs</h3>
+            <p><small>Free for use :) </small></p>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <h4>Encrypt</h4>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" placeholder="Input Value" id="inputan" name="inputan">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h4>Passphrase</h4>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" placeholder="Input Value" id="inputpass" name="inputpass">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <button class="btn btn-success" type="button" onclick="encrypt()">Encrypt</button>
+
+                <p>Result : </p><div id="app"></div>
+            </div>
+            
+
+            <div class="col-md-9">
+                <h4>Decrypt</h4>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" placeholder="Input Value" id="inputan2" name="inputan2">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button" onclick="decrypte()">Decrypt</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h4>Passphrase</h4>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" placeholder="Input Value" id="inputpass2" name="inputpass2">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <button class="btn btn-success" type="button" onclick="decrypte()">Decrypt</button>
+
+                <p>Result : </p><div id="app2"></div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>    
+    function encrypt() {
+        var inputan = document.getElementById('inputan').value;
+        var inputpass = document.getElementById('inputpass').value;
+        var encrypted = CryptoJS.AES.encrypt(inputan, inputpass, { mode: CryptoJS.mode.ECB });
+        document.getElementById('app').innerHTML = encrypted;
+    }
+
+    function decrypte() {
+        var inputan2 = document.getElementById('inputan2').value;
+        var inputpass2 = document.getElementById('inputpass2').value;
+        var decrypted = CryptoJS.AES.decrypt(inputan2, inputpass2, { mode: CryptoJS.mode.ECB });
+        document.getElementById('app2').innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
+    }
+</script>
