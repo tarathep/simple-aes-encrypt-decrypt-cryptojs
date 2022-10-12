@@ -20,14 +20,17 @@
         </div>
 
         <div class="row">
+           
+            <div class="col-md-12"><h4>Encrypt</h4></div>
             <div class="col-md-9">
-                <h4>Encrypt</h4>
+                <label for="inputan">Plaintext</label>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" placeholder="Input Value" id="inputan" name="inputan">
+                    <textarea type="text" class="form-control" placeholder="Input Value" id="inputan"
+                        name="inputan"></textarea>
                 </div>
             </div>
             <div class="col-md-3">
-                <h4>Passphrase</h4>
+                <label for="inputpass">Passphrase</label>
                 <div class="form-group mb-3">
                     <input type="text" class="form-control" placeholder="Input Value" id="inputpass" name="inputpass">
                 </div>
@@ -35,22 +38,25 @@
 
             <div class="col-md-12">
                 <button class="btn btn-success" type="button" onclick="encrypt()">Encrypt</button>
-
-                <p>Result : </p><div id="app"></div>
+                <br>
+                <br>
+                <div>
+                    <label for="app">Cyphertext</label>
+                    <input type="text" class="form-control" placeholder="Output Value" id="app" name="app">
+                </div>
             </div>
-            
+           
+            <div class="col-md-12"><br><br><hr></div>
 
+            <div class="col-md-12"><h4>Decrypt</h4></div>
             <div class="col-md-9">
-                <h4>Decrypt</h4>
+                <label for="inputan">Cyphertext</label>
                 <div class="form-group mb-3">
                     <input type="text" class="form-control" placeholder="Input Value" id="inputan2" name="inputan2">
-                    <div class="input-group-append">
-                        <button class="btn btn-success" type="button" onclick="decrypte()">Decrypt</button>
-                    </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <h4>Passphrase</h4>
+                <label for="inputpass2">Passphrase</label>
                 <div class="form-group mb-3">
                     <input type="text" class="form-control" placeholder="Input Value" id="inputpass2" name="inputpass2">
                 </div>
@@ -58,8 +64,14 @@
 
             <div class="col-md-12">
                 <button class="btn btn-success" type="button" onclick="decrypte()">Decrypt</button>
+                <br>
+                <br>
+                <div>
+                    <label for="app2">Plantext</label>
+                    <textarea type="text" class="form-control" placeholder="Output Value" id="app2" name="inputan"></textarea>
+                </div>
+                
 
-                <p>Result : </p><div id="app2"></div>
             </div>
 
 
@@ -71,12 +83,12 @@
 
 </html>
 
-<script>    
+<script>
     function encrypt() {
         var inputan = document.getElementById('inputan').value;
         var inputpass = document.getElementById('inputpass').value;
         var encrypted = CryptoJS.AES.encrypt(inputan, inputpass, { mode: CryptoJS.mode.ECB });
-        document.getElementById('app').innerHTML = encrypted;
+        document.getElementById('app').value = encrypted.toString();
     }
 
     function decrypte() {
